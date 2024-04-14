@@ -3,10 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Cotizador de prestamo</title>
 </head>
-<body>
-    
+<body data-tema>
+    <header>
+        <div>
+            <h1>COTIZADOR DE PRESTAMOS</h1>
+            <div>
+                <form action="">
+                    <input type="text" id="tipoPrestamo" placeholder="Tipo de prestamo">
+                    <button id="buscar">Buscar prestamo</button>
+                </form>
+                <button id="verCotizaciones">Ver cotizaciones</button>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+        <h2>Haz tu cotizacion!</h2>
+        <div>
+            <form action="" id="prestamo">
+                <fieldset>
+                    <legend>Datos de prestamo a cotizar</legend>
+                    <label for="tipo">Tipo de prestamo</label>
+                    <input type="text" id="tipo" placeholder="Tipo de Prestamo">
+                    <label for="saldo">Saldo solicitado</label>
+                    <input type="number" id="saldo" placeholder="Cantidad de dinero a pedir">
+                    <label for="cuotas">Cuotas</label>
+                    <input type="number" id="cuotas" placeholder="Cantidad de cuotas">
+                    <button id="cotizar">Cotizar</button>
+                </fieldset>
+            </form>
+        </div>
+        <div id="tema" data-tema><img src="./assets/img/btn-tema.svg" alt="Tema" class="btn-tema"></div>
+    </main>
+    <footer>
+
+    </footer>
 </body>
-<script src="./js/main.js"></script>
+<script src="./js/main.js" type="module"></script>
 </html>

@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.tema-oscuro {
+    background-color: #534e4e;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    div {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        h1 {
+            text-align: center;
+        }
+        div {
+            flex-direction: row;
+            align-self: flex-end;
+            width: fit-content;
+            margin: 25px 50px 0 0;
+            gap: 5px;
+            button {
+            }
+        }
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        form {
+            margin: 15px 0 0 0;
+            width: 50%;
+            fieldset {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: auto;
+                legend {
+                    
+                }
+                input {
+                    width: 95%;
+                    margin: 10px;
+                }
+                button {
+                    margin: 0 0 5px;
+                }
+            }
+        }
+        &:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            position: fixed;
+            bottom: 1vh;
+            left: 1vw;
+            border: solid 3px black;
+            border-radius: 100%;
+        }
+    }
+}
+
+.cotizaciones {
+    width: 50%;
+    height: 50%;
+    border: solid black 2px;
+    position: fixed;
+    left: 50vw;
+    bottom: 50vh;
+    transform: translate(-50%, 50%);
+    border-radius: 10px;
+    filter: drop-shadow(2px 3px 4px #8a888886);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #dbdbdb;
+    table {
+        width: 95%;
+        border: solid 2px #F53527;
+        border-collapse: collapse;
+        th {
+            background-color: #F53527;
+        }
+        tr:nth-child(even) {
+            background-color: #F57B27;
+        }
+    }
+}
+
+.btn-tema {
+    transition: ease 0.5s;
+    &:hover {
+        filter: saturate(50%) contrast(100%) invert((80%));
+        transition: ease 0.5s;
+    }
+}
