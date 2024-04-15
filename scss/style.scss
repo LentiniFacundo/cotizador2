@@ -28,8 +28,6 @@ header {
             width: fit-content;
             margin: 25px 50px 0 0;
             gap: 5px;
-            button {
-            }
         }
     }
 }
@@ -48,6 +46,8 @@ main {
         form {
             margin: 15px 0 0 0;
             width: 50%;
+            background-color: #181924;
+            color: white;
             fieldset {
                 display: flex;
                 flex-direction: column;
@@ -92,16 +92,21 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #dbdbdb;
+    background-color: #181924;
+    color: white;
+    text-align: center;
     table {
         width: 95%;
-        border: solid 2px #F53527;
+        border: solid 2px #1C1F30;
         border-collapse: collapse;
         th {
-            background-color: #F53527;
+            background-color: #202334;
         }
-        tr:nth-child(even) {
-            background-color: #F57B27;
+        tr {
+            background-color: #292C3E;
+            &:hover {
+                background-color: #1f2130;
+            }
         }
     }
 }
@@ -112,4 +117,10 @@ main {
         filter: saturate(50%) contrast(100%) invert((80%));
         transition: ease 0.5s;
     }
+}
+
+button {
+    color: #e5f876;
+    border: solid 2px #e5f876;
+    background-color: #202334;
 }

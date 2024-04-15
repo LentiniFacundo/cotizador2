@@ -2,6 +2,7 @@ import { buscarPrestamoHTML } from "./buscar-html.js";
 import { Prestamo } from "./class-prestamo.js";
 import { cotizacionesHTML } from "./cotizaciones-html.js";
 
+
 const temaOscuro = () => {
     const $etiquetas = document.querySelectorAll("[data-tema]");
     $etiquetas.forEach(etiqueta => {
@@ -63,6 +64,7 @@ export const cotizar = (btnCotizar, array) => {
 export const verCotizaciones = (arrPrestanos, tablaId, btnCotizaciones) => {
     document.addEventListener("click", (e) => {
         if(e.target.matches(btnCotizaciones)) {
+            if(arrPrestanos.length === 0) return alert("No hay cotizaciones");
             cotizacionesHTML();
             const $tabla = document.getElementById(tablaId);
             arrPrestanos.forEach(prestamo => {
@@ -70,9 +72,9 @@ export const verCotizaciones = (arrPrestanos, tablaId, btnCotizaciones) => {
                 <td>${prestamo.tipo}</td>
                 <td>${prestamo.saldoSolicitado}</td>
                 <td>${prestamo.cuotas}</td>
-                <td>${prestamo.saldoSolicitado * prestamo.interes / 100}</td>
-                <td>${(prestamo.saldoSolicitado * prestamo.interes / 100 + prestamo.saldoSolicitado) / prestamo.cuotas}</td>
-                <td>${prestamo.saldoSolicitado + (prestamo.saldoSolicitado * prestamo.interes / 100)}</td>
+                <td>${parseFloat(prestamo.saldoSolicitado * prestamo.interes / 100).toFixed(2)}</td>
+                <td>${parseFloat((prestamo.saldoSolicitado * prestamo.interes / 100 + prestamo.saldoSolicitado) / prestamo.cuotas).toFixed(2)}</td>
+                <td>${parseFloat(prestamo.saldoSolicitado + (prestamo.saldoSolicitado * prestamo.interes / 100)).toFixed(2)}</td>
             `);
         });
         document.getElementById("verCotizaciones").setAttribute("disabled", "true");
@@ -100,19 +102,19 @@ export const buscar = (arrayPrestamos, tbResutados, btnBuscar) => {
     document.addEventListener("click", (e) => {
         if(e.target.matches(btnBuscar)) {
             e.preventDefault();
-            buscarPrestamoHTML();
             let $tipo = document.getElementById("tipoPrestamo").value;
             let resultado = buscarPrestamo($tipo, arrayPrestamos);
-            if(!resultado.length) return alert("No se encontro ningun prestamo de ese tipo");
+            if(resultado.length === 0) return alert("no hay ningun resultado");
+            buscarPrestamoHTML();
             const $tabla = document.getElementById(tbResutados);
             resultado.forEach(prestamo => {
                 $tabla.insertAdjacentHTML("beforeend", `
                     <td>${prestamo.tipo}</td>
                     <td>${prestamo.saldoSolicitado}</td>
                     <td>${prestamo.cuotas}</td>
-                    <td>${prestamo.saldoSolicitado * prestamo.interes / 100}</td>
-                    <td>${(prestamo.saldoSolicitado * prestamo.interes / 100 + prestamo.saldoSolicitado) / prestamo.cuotas}</td>
-                    <td>${prestamo.saldoSolicitado + (prestamo.saldoSolicitado * prestamo.interes / 100)}</td>
+                    <td>${parseFloat(prestamo.saldoSolicitado * prestamo.interes / 100).toFixed(2)}</td>
+                    <td>${parseFloat((prestamo.saldoSolicitado * prestamo.interes / 100 + prestamo.saldoSolicitado) / prestamo.cuotas).toFixed(2)}</td>
+                    <td>${parseFloat(prestamo.saldoSolicitado + (prestamo.saldoSolicitado * prestamo.interes / 100)).toFixed(2)}</td>
                 `);
             });
             document.getElementById("verCotizaciones").setAttribute("disabled", "true");

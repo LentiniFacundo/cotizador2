@@ -6,7 +6,7 @@ export const buscarPrestamoHTML = () => {
     const $btnCerrar = document.createElement("button");
     const $main = document.getElementById("main");
     $div.id = "resultados";
-    $div.classList.add("resultados");
+    $div.classList.add("cotizaciones");
     $div.setAttribute("data-modo", "");
     $h2.innerText = "Resultados de la busqueda";
     $table.id = "tbResultados";

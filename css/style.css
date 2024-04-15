@@ -39,7 +39,9 @@ main {
     width: 80%; }
     main div form {
       margin: 15px 0 0 0;
-      width: 50%; }
+      width: 50%;
+      background-color: #181924;
+      color: white; }
       main div form fieldset {
         display: flex;
         flex-direction: column;
@@ -74,18 +76,27 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #dbdbdb; }
+  background-color: #181924;
+  color: white;
+  text-align: center; }
   .cotizaciones table {
     width: 95%;
-    border: solid 2px #F53527;
+    border: solid 2px #1C1F30;
     border-collapse: collapse; }
     .cotizaciones table th {
-      background-color: #F53527; }
-    .cotizaciones table tr:nth-child(even) {
-      background-color: #F57B27; }
+      background-color: #202334; }
+    .cotizaciones table tr {
+      background-color: #292C3E; }
+      .cotizaciones table tr:hover {
+        background-color: #1f2130; }
 
 .btn-tema {
   transition: ease 0.5s; }
   .btn-tema:hover {
     filter: saturate(50%) contrast(100%) invert(80%);
     transition: ease 0.5s; }
+
+button {
+  color: #e5f876;
+  border: solid 2px #e5f876;
+  background-color: #202334; }
