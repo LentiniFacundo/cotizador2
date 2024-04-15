@@ -57,6 +57,11 @@ export const cotizar = (btnCotizar, array) => {
             array.push(prestamo);
             localStorage.setItem("prestamos", JSON.stringify(array));
             document.getElementById("prestamo").reset();
+            Swal.fire({
+                text: "Cotizacion exitosa!",
+                icon: "success",
+                timer: 1500
+            })
         };
     });
 };
@@ -64,7 +69,7 @@ export const cotizar = (btnCotizar, array) => {
 export const verCotizaciones = (arrPrestanos, tablaId, btnCotizaciones) => {
     document.addEventListener("click", (e) => {
         if(e.target.matches(btnCotizaciones)) {
-            if(arrPrestanos.length === 0) return alert("No hay cotizaciones");
+            if(arrPrestanos.length === 0) return Swal.fire("No hay cotizaciones");
             cotizacionesHTML();
             const $tabla = document.getElementById(tablaId);
             arrPrestanos.forEach(prestamo => {
@@ -104,7 +109,7 @@ export const buscar = (arrayPrestamos, tbResutados, btnBuscar) => {
             e.preventDefault();
             let $tipo = document.getElementById("tipoPrestamo").value;
             let resultado = buscarPrestamo($tipo, arrayPrestamos);
-            if(resultado.length === 0) return alert("no hay ningun resultado");
+            if(resultado.length === 0) return Swal.fire("no hay ningun resultado");
             buscarPrestamoHTML();
             const $tabla = document.getElementById(tbResutados);
             resultado.forEach(prestamo => {
