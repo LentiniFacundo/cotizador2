@@ -4,7 +4,7 @@ export const buscarPrestamoHTML = () => {
     const $h2 = document.createElement("h2");
     const $table = document.createElement("table");
     const $btnCerrar = document.createElement("button");
-    const $main = document.getElementById("main");
+    const $body = document.querySelector("body");
     $div.id = "resultados";
     $div.classList.add("cotizaciones");
     $div.setAttribute("data-modo", "");
@@ -23,5 +23,5 @@ export const buscarPrestamoHTML = () => {
     $div.appendChild($table);
     $div.appendChild($btnCerrar);
     $fragment.appendChild($div);
-    $main.appendChild($fragment);
+    $body.appendChild($fragment);
 };

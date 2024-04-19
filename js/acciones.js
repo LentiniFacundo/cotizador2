@@ -52,6 +52,12 @@ export const cotizar = (btnCotizar, array) => {
             const $tipo = document.getElementById("tipo").value;
             let $saldo = parseInt(document.getElementById("saldo").value);
             let $cuotas = parseInt(document.getElementById("cuotas").value);
+            if(!$tipo || !$saldo || !$cuotas) return Swal.fire({
+                text: "Todos los campos son obligatorios", 
+                icon: "error",
+                iconColor: "#36A094",
+                confirmButtonColor: `#36A094`
+            });
             const prestamo = new Prestamo($saldo, $cuotas, $tipo);
             prestamo.aplicarInteres();
             array.push(prestamo);
@@ -60,6 +66,8 @@ export const cotizar = (btnCotizar, array) => {
             Swal.fire({
                 text: "Cotizacion exitosa!",
                 icon: "success",
+                iconColor: "#36A094",
+                confirmButtonColor: `#36A094`,
                 timer: 1500
             })
         };
@@ -69,7 +77,12 @@ export const cotizar = (btnCotizar, array) => {
 export const verCotizaciones = (arrPrestanos, tablaId, btnCotizaciones) => {
     document.addEventListener("click", (e) => {
         if(e.target.matches(btnCotizaciones)) {
-            if(arrPrestanos.length === 0) return Swal.fire("No hay cotizaciones");
+            if(arrPrestanos.length === 0) return Swal.fire({
+                text: "No hay cotizaciones",
+                icon: "error",
+                iconColor: "#36A094",
+                confirmButtonColor: `#36A094`
+            });
             cotizacionesHTML();
             const $tabla = document.getElementById(tablaId);
             arrPrestanos.forEach(prestamo => {
@@ -85,6 +98,8 @@ export const verCotizaciones = (arrPrestanos, tablaId, btnCotizaciones) => {
         document.getElementById("verCotizaciones").setAttribute("disabled", "true");
         document.getElementById("cotizar").setAttribute("disabled", "true");
         document.getElementById("buscar").setAttribute("disabled", "true");
+        document.querySelector("header").classList.add("inactiva");
+        document.querySelector("main").classList.add("inactiva");
         };
     });
 };
@@ -93,12 +108,14 @@ export const verCotizaciones = (arrPrestanos, tablaId, btnCotizaciones) => {
 export const cerrarCotizaciones = (btnCerrar, cotizacionesDivId) => {
     document.addEventListener("click", (e) => {
         if(e.target.matches(btnCerrar)) {
-            let $main = document.getElementById("main");
+            let $body = document.querySelector("body");
             let $div = document.getElementById(cotizacionesDivId)
-            $main.removeChild($div)
+            $body.removeChild($div)
             document.getElementById("verCotizaciones").removeAttribute("disabled");
             document.getElementById("cotizar").removeAttribute("disabled");
             document.getElementById("buscar").removeAttribute("disabled");
+            document.querySelector("header").classList.remove("inactiva");
+            document.querySelector("main").classList.remove("inactiva");
         };
     });
 };
@@ -109,7 +126,12 @@ export const buscar = (arrayPrestamos, tbResutados, btnBuscar) => {
             e.preventDefault();
             let $tipo = document.getElementById("tipoPrestamo").value;
             let resultado = buscarPrestamo($tipo, arrayPrestamos);
-            if(resultado.length === 0) return Swal.fire("no hay ningun resultado");
+            if(resultado.length === 0) return Swal.fire({
+                text: "No se encontraron resultados",
+                icon: "error",
+                iconColor: "#36A094",
+                confirmButtonColor: `#36A094`
+            });
             buscarPrestamoHTML();
             const $tabla = document.getElementById(tbResutados);
             resultado.forEach(prestamo => {
@@ -125,6 +147,8 @@ export const buscar = (arrayPrestamos, tbResutados, btnBuscar) => {
             document.getElementById("verCotizaciones").setAttribute("disabled", "true");
             document.getElementById("cotizar").setAttribute("disabled", "true");
             document.getElementById("buscar").setAttribute("disabled", "true");
+            document.querySelector("header").classList.add("inactiva");
+            document.querySelector("main").classList.add("inactiva");
         };
     });
 };
@@ -132,12 +156,14 @@ export const buscar = (arrayPrestamos, tbResutados, btnBuscar) => {
 export const cerrarResultados = (btnCerrar, resultadosDivId) => {
     document.addEventListener("click", (e) => {
         if(e.target.matches(btnCerrar)) {
-            let $main = document.getElementById("main");
+            let $body = document.querySelector("body");
             let $div = document.getElementById(resultadosDivId)
-            $main.removeChild($div)
+            $body.removeChild($div)
             document.getElementById("verCotizaciones").removeAttribute("disabled");
             document.getElementById("cotizar").removeAttribute("disabled");
             document.getElementById("buscar").removeAttribute("disabled");
+            document.querySelector("header").classList.remove("inactiva");
+            document.querySelector("main").classList.remove("inactiva");
         };
     });
 };

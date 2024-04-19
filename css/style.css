@@ -3,8 +3,45 @@
   padding: 0;
   box-sizing: border-box; }
 
+.btn-tema {
+  transition: ease-in-out 0.3s;
+  cursor: pointer; }
+  .btn-tema:hover {
+    filter: saturate(100%) contrast(100%) brightness(50%);
+    transition: ease-in-out 0.3s; }
+
 .tema-oscuro {
-  background-color: #534e4e; }
+  background-color: #002B26;
+  color: #ffffffe7;
+  transition: 0.3s ease-in-out; }
+  .tema-oscuro h1, .tema-oscuro h2, .tema-oscuro h3, .tema-oscuro h4, .tema-oscuro h5, .tema-oscuro h6 {
+    color: #ffffffee; }
+  .tema-oscuro button {
+    color: #ffffffe7;
+    border: #3f706b;
+    background-color: #1E8B7F; }
+  .tema-oscuro form {
+    background-color: #00443D;
+    color: #ffffffe7; }
+  .tema-oscuro .cotizaciones {
+    border: #3f706b;
+    background-color: #002B26;
+    color: #ffffffe7; }
+    .tema-oscuro .cotizaciones th {
+      background-color: #1E8B7F; }
+    .tema-oscuro .cotizaciones tr {
+      background-color: #00443D; }
+      .tema-oscuro .cotizaciones tr:hover {
+        background-color: #224744; }
+
+.inactiva {
+  pointer-events: none;
+  opacity: 0.1;
+  filter: blur(15px); }
+
+body {
+  background-color: #DBF6F2;
+  transition: 0.3s ease-in-out; }
 
 header {
   display: flex;
@@ -25,6 +62,12 @@ header {
       width: fit-content;
       margin: 25px 50px 0 0;
       gap: 5px; }
+      header div div form {
+        gap: 5px; }
+        header div div form input {
+          padding: 6px;
+          border-radius: 6px;
+          border: solid #9BE1D8 3px; }
 
 main {
   display: flex;
@@ -40,17 +83,24 @@ main {
     main div form {
       margin: 15px 0 0 0;
       width: 50%;
-      background-color: #181924;
-      color: white; }
+      background-color: #d0f7f1; }
       main div form fieldset {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: auto; }
+        width: auto;
+        border-width: 3px;
+        border-color: #9BE1D8; }
+        main div form fieldset legend {
+          margin-left: 20px;
+          padding: 0 10px; }
         main div form fieldset input {
           width: 95%;
-          margin: 10px; }
+          margin: 10px;
+          padding: 6px;
+          border-radius: 6px;
+          border: solid 3px #9BE1D8; }
         main div form fieldset button {
           margin: 0 0 5px; }
     main div:nth-child(3) {
@@ -59,13 +109,13 @@ main {
       position: fixed;
       bottom: 1vh;
       left: 1vw;
-      border: solid 3px black;
+      border: solid 3px #9BE1D8;
       border-radius: 100%; }
 
 .cotizaciones {
   width: 50%;
   height: 50%;
-  border: solid black 2px;
+  border: solid #9BE1D8 3px;
   position: fixed;
   left: 50vw;
   bottom: 50vh;
@@ -76,27 +126,33 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #181924;
-  color: white;
+  background-color: #d0f7f1;
+  color: #315551;
   text-align: center; }
   .cotizaciones table {
     width: 95%;
-    border: solid 2px #1C1F30;
+    border: solid 2px #36A094;
     border-collapse: collapse; }
     .cotizaciones table th {
-      background-color: #202334; }
+      background-color: #36A094; }
     .cotizaciones table tr {
-      background-color: #292C3E; }
+      background-color: #DBF6F2; }
       .cotizaciones table tr:hover {
-        background-color: #1f2130; }
-
-.btn-tema {
-  transition: ease 0.5s; }
-  .btn-tema:hover {
-    filter: saturate(50%) contrast(100%) invert(80%);
-    transition: ease 0.5s; }
+        background-color: #50BBAF; }
+  .cotizaciones button {
+    position: absolute;
+    top: 1vh;
+    right: 1vw; }
 
 button {
-  color: #e5f876;
-  border: solid 2px #e5f876;
-  background-color: #202334; }
+  width: auto;
+  color: #315551;
+  border: solid 3px #9BE1D8;
+  background-color: #36A094;
+  padding: 6px;
+  border-radius: 6px;
+  font-weight: bolder;
+  cursor: pointer; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #233d3a; }

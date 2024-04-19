@@ -1,11 +1,61 @@
+@import "./utilities/variables";
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+.btn-tema {
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+    &:hover {
+        filter: saturate(100%) contrast(100%) brightness(50%);
+        transition: ease-in-out 0.3s;
+    }
+}
+
 .tema-oscuro {
-    background-color: #534e4e;
+    background-color: $dark-body-bgColor;
+    color: $dark-text-color;
+    transition: 0.3s ease-in-out;
+    h1, h2, h3, h4, h5, h6 {
+        color: $dark-title-color;
+    }
+    button {
+    color: $dark-text-color;
+    border: $dark-border-color;
+    background-color: $dark-main-color;
+    }
+    form {
+    background-color: $dark-container-color;
+    color: $dark-text-color;
+    }
+    .cotizaciones {
+        border: $dark-border-color;
+        background-color: $dark-body-bgColor;
+        color: $dark-text-color;
+        th {
+            background-color: $dark-main-color;
+        }
+        tr {
+            background-color: $dark-container-color;
+            &:hover {
+                background-color: $dark-sec-color;
+            }
+        }
+    }
+}
+
+.inactiva {
+    pointer-events: none;
+    opacity: 0.1;
+    filter: blur(15px);
+}
+
+body {
+    background-color: $body-bgColor;
+    transition: 0.3s ease-in-out;
 }
 
 header {
@@ -28,6 +78,14 @@ header {
             width: fit-content;
             margin: 25px 50px 0 0;
             gap: 5px;
+            form {
+                gap: 5px;
+                input {
+                    padding: 6px;
+                    border-radius: 6px;
+                    border: solid $border-color 3px;
+                }
+            }
         }
     }
 }
@@ -46,20 +104,25 @@ main {
         form {
             margin: 15px 0 0 0;
             width: 50%;
-            background-color: #181924;
-            color: white;
+            background-color: $container-color;
             fieldset {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 width: auto;
+                border-width: 3px;
+                border-color: $border-color;
                 legend {
-                    
+                    margin-left: 20px;
+                    padding: 0 10px;
                 }
                 input {
                     width: 95%;
                     margin: 10px;
+                    padding: 6px;
+                    border-radius: 6px;
+                    border: solid 3px $border-color;
                 }
                 button {
                     margin: 0 0 5px;
@@ -72,7 +135,7 @@ main {
             position: fixed;
             bottom: 1vh;
             left: 1vw;
-            border: solid 3px black;
+            border: solid 3px $border-color;
             border-radius: 100%;
         }
     }
@@ -81,7 +144,7 @@ main {
 .cotizaciones {
     width: 50%;
     height: 50%;
-    border: solid black 2px;
+    border: solid $border-color 3px;
     position: fixed;
     left: 50vw;
     bottom: 50vh;
@@ -92,35 +155,41 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #181924;
-    color: white;
+    background-color: $container-color;
+    color: $text-color;
     text-align: center;
     table {
         width: 95%;
-        border: solid 2px #1C1F30;
+        border: solid 2px $main-color;
         border-collapse: collapse;
         th {
-            background-color: #202334;
+            background-color: $main-color;
         }
         tr {
-            background-color: #292C3E;
+            background-color: $body-bgColor;
             &:hover {
-                background-color: #1f2130;
+                background-color: $sec-main-color;
             }
         }
     }
-}
-
-.btn-tema {
-    transition: ease 0.5s;
-    &:hover {
-        filter: saturate(50%) contrast(100%) invert((80%));
-        transition: ease 0.5s;
+    button {
+        position: absolute;
+        top: 1vh;
+        right: 1vw;
     }
 }
 
 button {
-    color: #e5f876;
-    border: solid 2px #e5f876;
-    background-color: #202334;
+    width: auto;
+    color: $text-color;
+    border: solid 3px $border-color;
+    background-color: $main-color;
+    padding: 6px;
+    border-radius: 6px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $title-color;
 }
