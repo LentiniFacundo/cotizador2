@@ -22,6 +22,11 @@
     h1, h2, h3, h4, h5, h6 {
         color: $dark-title-color;
     }
+    input {
+        &:focus-visible {
+            outline: 3px $dark-main-color solid;
+        }
+    }
     button {
     color: $dark-text-color;
     border: $dark-border-color;
@@ -75,7 +80,7 @@ header {
         div {
             flex-direction: row;
             align-self: flex-end;
-            width: fit-content;
+            width: auto;
             margin: 25px 50px 0 0;
             gap: 5px;
             form {
@@ -123,6 +128,9 @@ main {
                     padding: 6px;
                     border-radius: 6px;
                     border: solid 3px $border-color;
+                    &:focus-visible {
+                        outline: 3px $sec-main-color solid;
+                    }
                 }
                 button {
                     margin: 0 0 5px;
@@ -143,7 +151,7 @@ main {
 
 .cotizaciones {
     width: 50%;
-    height: 50%;
+    height: 25%;
     border: solid $border-color 3px;
     position: fixed;
     left: 50vw;
@@ -158,10 +166,16 @@ main {
     background-color: $container-color;
     color: $text-color;
     text-align: center;
+    overflow-y: auto;
+    h2 {
+        margin: 10px;
+    }
     table {
         width: 95%;
+        height: auto;
         border: solid 2px $main-color;
         border-collapse: collapse;
+        margin: 15px;
         th {
             background-color: $main-color;
         }
@@ -188,6 +202,11 @@ button {
     border-radius: 6px;
     font-weight: bolder;
     cursor: pointer;
+    transition: 0.3s ease-in-out;
+    &:hover {
+        filter: brightness(130%);
+        transition: 0.3s ease-in-out;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {

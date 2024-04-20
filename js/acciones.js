@@ -1,4 +1,3 @@
-import { buscarPrestamoHTML } from "./buscar-html.js";
 import { Prestamo } from "./class-prestamo.js";
 import { cotizacionesHTML } from "./cotizaciones-html.js";
 
@@ -83,7 +82,7 @@ export const verCotizaciones = (arrPrestanos, tablaId, btnCotizaciones) => {
                 iconColor: "#36A094",
                 confirmButtonColor: `#36A094`
             });
-            cotizacionesHTML();
+            cotizacionesHTML("cotizaciones", "Cotizaciones", "tbCotizaciones", "btnCerrar");
             const $tabla = document.getElementById(tablaId);
             arrPrestanos.forEach(prestamo => {
             $tabla.insertAdjacentHTML("beforeend", `
@@ -132,7 +131,7 @@ export const buscar = (arrayPrestamos, tbResutados, btnBuscar) => {
                 iconColor: "#36A094",
                 confirmButtonColor: `#36A094`
             });
-            buscarPrestamoHTML();
+            cotizacionesHTML("resultados", "Resultados", "tbResultados", "btnCerrarResultados");
             const $tabla = document.getElementById(tbResutados);
             resultado.forEach(prestamo => {
                 $tabla.insertAdjacentHTML("beforeend", `

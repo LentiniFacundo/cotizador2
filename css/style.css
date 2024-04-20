@@ -16,6 +16,8 @@
   transition: 0.3s ease-in-out; }
   .tema-oscuro h1, .tema-oscuro h2, .tema-oscuro h3, .tema-oscuro h4, .tema-oscuro h5, .tema-oscuro h6 {
     color: #ffffffee; }
+  .tema-oscuro input:focus-visible {
+    outline: 3px #1E8B7F solid; }
   .tema-oscuro button {
     color: #ffffffe7;
     border: #3f706b;
@@ -59,7 +61,7 @@ header {
     header div div {
       flex-direction: row;
       align-self: flex-end;
-      width: fit-content;
+      width: auto;
       margin: 25px 50px 0 0;
       gap: 5px; }
       header div div form {
@@ -101,6 +103,8 @@ main {
           padding: 6px;
           border-radius: 6px;
           border: solid 3px #9BE1D8; }
+          main div form fieldset input:focus-visible {
+            outline: 3px #50BBAF solid; }
         main div form fieldset button {
           margin: 0 0 5px; }
     main div:nth-child(3) {
@@ -114,7 +118,7 @@ main {
 
 .cotizaciones {
   width: 50%;
-  height: 50%;
+  height: 25%;
   border: solid #9BE1D8 3px;
   position: fixed;
   left: 50vw;
@@ -128,11 +132,16 @@ main {
   align-items: center;
   background-color: #d0f7f1;
   color: #315551;
-  text-align: center; }
+  text-align: center;
+  overflow-y: auto; }
+  .cotizaciones h2 {
+    margin: 10px; }
   .cotizaciones table {
     width: 95%;
+    height: auto;
     border: solid 2px #36A094;
-    border-collapse: collapse; }
+    border-collapse: collapse;
+    margin: 15px; }
     .cotizaciones table th {
       background-color: #36A094; }
     .cotizaciones table tr {
@@ -152,7 +161,11 @@ button {
   padding: 6px;
   border-radius: 6px;
   font-weight: bolder;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: 0.3s ease-in-out; }
+  button:hover {
+    filter: brightness(130%);
+    transition: 0.3s ease-in-out; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #233d3a; }

@@ -1,15 +1,15 @@
-export const cotizacionesHTML = () => {
+export const cotizacionesHTML = (divId, h2Inner, tableId, btnCerrarId) => {
     const $fragment = document.createDocumentFragment();
     const $div = document.createElement("div");
     const $h2 = document.createElement("h2");
     const $table = document.createElement("table");
     const $btnCerrar = document.createElement("button");
     const $body = document.querySelector("body");
-    $div.id = "cotizaciones";
+    $div.id = `${divId}`;
     $div.classList.add("cotizaciones");
     $div.setAttribute("data-modo", "");
-    $h2.innerText = "Cotizaciones";
-    $table.id = "tbCotizaciones";
+    $h2.innerText = `${h2Inner}`;
+    $table.id = `${tableId}`;
     $table.insertAdjacentHTML("afterbegin", `
     <th>Tipo</th>
     <th>Saldo</th>
@@ -17,7 +17,7 @@ export const cotizacionesHTML = () => {
     <th>Tot. Intereses</th>
     <th>Pago Mensual</th>
     <th>Total a pagar</th>`);
-    $btnCerrar.id = "btnCerrar";
+    $btnCerrar.id = `${btnCerrarId}`;
     $btnCerrar.innerText = "X Cerrar";
     $div.appendChild($h2);
     $div.appendChild($table);
