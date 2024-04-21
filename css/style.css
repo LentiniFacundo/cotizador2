@@ -37,9 +37,10 @@
         background-color: #224744; }
 
 .inactiva {
+  transition: 0.3s ease-in-out;
   pointer-events: none;
   opacity: 0.1;
-  filter: blur(15px); }
+  filter: blur(0.9375rem); }
 
 body {
   background-color: #DBF6F2;
@@ -51,7 +52,8 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 200px; }
+  height: 12.5rem;
+  font-size: 1.25rem; }
   header div {
     display: flex;
     flex-direction: column;
@@ -62,20 +64,21 @@ header {
       flex-direction: row;
       align-self: flex-end;
       width: auto;
-      margin: 25px 50px 0 0;
-      gap: 5px; }
+      margin: 1.5625rem 3.125rem 0 0;
+      gap: 0.3125rem; }
       header div div form {
-        gap: 5px; }
+        gap: 0.3125rem; }
         header div div form input {
-          padding: 6px;
-          border-radius: 6px;
-          border: solid #9BE1D8 3px; }
+          padding: 0.375rem;
+          border-radius: 0.375rem;
+          border: solid #9BE1D8 0.1875rem; }
 
 main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  font-size: 1.25rem; }
   main div {
     display: flex;
     flex-direction: column;
@@ -83,7 +86,7 @@ main {
     align-items: center;
     width: 80%; }
     main div form {
-      margin: 15px 0 0 0;
+      margin: 0.9375rem 0 0 0;
       width: 50%;
       background-color: #d0f7f1; }
       main div form fieldset {
@@ -92,58 +95,60 @@ main {
         justify-content: center;
         align-items: center;
         width: auto;
-        border-width: 3px;
+        border-width: 0.1875rem;
         border-color: #9BE1D8; }
         main div form fieldset legend {
-          margin-left: 20px;
-          padding: 0 10px; }
+          margin-left: 1.25rem;
+          padding: 0 0.625rem; }
         main div form fieldset input {
           width: 95%;
-          margin: 10px;
-          padding: 6px;
-          border-radius: 6px;
-          border: solid 3px #9BE1D8; }
+          margin: 0.625rem;
+          padding: 0.375rem;
+          border-radius: 0.375rem;
+          border: solid 0.1875rem #9BE1D8; }
           main div form fieldset input:focus-visible {
-            outline: 3px #50BBAF solid; }
+            outline: 0.1875rem #50BBAF solid; }
         main div form fieldset button {
-          margin: 0 0 5px; }
+          margin: 0 0 0.3125rem; }
     main div:nth-child(3) {
-      width: 40px;
-      height: 40px;
+      width: 2.5rem;
+      height: 2.5rem;
       position: fixed;
       bottom: 1vh;
       left: 1vw;
-      border: solid 3px #9BE1D8;
+      border: solid 0.1875rem #9BE1D8;
       border-radius: 100%; }
 
 .cotizaciones {
   width: 50%;
-  height: 25%;
-  border: solid #9BE1D8 3px;
+  height: auto;
+  border: solid #9BE1D8 0.1875rem;
   position: fixed;
   left: 50vw;
   bottom: 50vh;
   transform: translate(-50%, 50%);
-  border-radius: 10px;
-  filter: drop-shadow(2px 3px 4px #8a888886);
+  border-radius: 0.625rem;
+  filter: drop-shadow(0.125rem 0.1875rem 0.25rem #8a888886);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #d0f7f1;
+  font-size: 1.25rem;
   color: #315551;
   text-align: center;
   overflow-y: auto; }
   .cotizaciones h2 {
-    margin: 10px; }
+    margin: 0.625rem; }
   .cotizaciones table {
     width: 95%;
     height: auto;
-    border: solid 2px #36A094;
+    border: solid 0.125rem #36A094;
     border-collapse: collapse;
-    margin: 15px; }
+    margin: 0.9375rem; }
     .cotizaciones table th {
-      background-color: #36A094; }
+      background-color: #36A094;
+      font-size: 1.40rem; }
     .cotizaciones table tr {
       background-color: #DBF6F2; }
       .cotizaciones table tr:hover {
@@ -156,11 +161,12 @@ main {
 button {
   width: auto;
   color: #315551;
-  border: solid 3px #9BE1D8;
+  border: solid 0.1875rem #9BE1D8;
   background-color: #36A094;
-  padding: 6px;
-  border-radius: 6px;
+  padding: 0.375rem;
+  border-radius: 0.375rem;
   font-weight: bolder;
+  font-size: 1.25rem;
   cursor: pointer;
   transition: 0.3s ease-in-out; }
   button:hover {
@@ -169,3 +175,56 @@ button {
 
 h1, h2, h3, h4, h5, h6 {
   color: #233d3a; }
+
+@media (max-width: 1339px) {
+  .cotizaciones {
+    width: 80%; }
+    .cotizaciones table th {
+      font-size: 1.39rem; }
+    .cotizaciones table td {
+      font-size: 1.25rem; } }
+
+@media (max-width: 1045px) {
+  header {
+    font-size: 1.125rem; }
+    header div {
+      width: 90%; }
+  main div form {
+    width: 90%; }
+  button {
+    font-size: 1.125rem; } }
+
+@media (max-width: 1045px) {
+  .cotizaciones {
+    width: 85%; }
+    .cotizaciones table th {
+      font-size: 1.125rem; }
+    .cotizaciones table td {
+      font-size: 1.120rem; } }
+
+@media (max-width: 768px) {
+  header {
+    font-size: 0.875rem; }
+    header div {
+      width: 100%; }
+      header div div {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin: 1.5625rem 0 0 0; }
+  main div {
+    width: 100%; }
+    main div form {
+      width: 100%; }
+    main div:nth-child(3) {
+      left: 50vw; }
+  button {
+    font-size: 0.875rem; } }
+
+@media (max-width: 768px) {
+  .cotizaciones {
+    width: 100%; }
+    .cotizaciones table th {
+      font-size: 1rem; }
+    .cotizaciones table td {
+      font-size: 0.90rem; } }
