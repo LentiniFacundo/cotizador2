@@ -76,7 +76,7 @@ export const cotizar = (btnCotizar, array) => {
 export const verCotizaciones = (arrPrestanos, tablaId, btnCotizaciones) => {
     document.addEventListener("click", (e) => {
         if(e.target.matches(btnCotizaciones)) {
-            if(arrPrestanos.length === 0) return Swal.fire({
+            if(!arrPrestanos.length) return Swal.fire({
                 text: "No hay cotizaciones",
                 icon: "error",
                 iconColor: "#36A094",
