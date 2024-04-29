@@ -1,5 +1,7 @@
 import { Prestamo } from "./class-prestamo.js";
 import { cotizacionesHTML } from "./cotizaciones-html.js";
+import { cerrarLoader, loader } from "./loader.js";
+import { mercadosHTML } from "./mercados-html.js";
 
 
 const temaOscuro = () => {
@@ -108,7 +110,7 @@ export const cerrarCotizaciones = (btnCerrar, cotizacionesDivId) => {
     document.addEventListener("click", (e) => {
         if(e.target.matches(btnCerrar)) {
             let $body = document.querySelector("body");
-            let $div = document.getElementById(cotizacionesDivId)
+            let $div = document.getElementById(cotizacionesDivId);
             $body.removeChild($div)
             document.getElementById("verCotizaciones").removeAttribute("disabled");
             document.getElementById("cotizar").removeAttribute("disabled");
@@ -172,4 +174,73 @@ export const prestamosLS = (arrayPrestamos) => {
         const prestamos = JSON.parse(localStorage.getItem("prestamos"));
         prestamos.forEach(prestamo => arrayPrestamos.push(prestamo));
     }
+};
+
+export const verMercados = (btnMercados) => {
+    document.addEventListener("click", (e) => {
+        if(e.target.matches(btnMercados)) {
+            document.getElementById("verCotizaciones").setAttribute("disabled", "true");
+            document.getElementById("cotizar").setAttribute("disabled", "true");
+            document.getElementById("buscar").setAttribute("disabled", "true");
+            document.getElementById("btnMercados").setAttribute("disabled", "true");
+            loader();
+            fetch("https://criptoya.com/api/dolar", {
+                headers: {
+                    "content.type": "aplication/json"
+                }
+            })
+            .then(response => response.json())
+            .then(({ahorro, blue, mayorista, oficial, tarjeta, ccl}) => {
+                    cerrarLoader()
+                    let $container = document.getElementById("crypto-dolar");
+                    if($container.classList.contains("cerrada")) $container.classList.remove("cerrada");
+                    document.querySelector(".crypto-dolar").classList.add("abrir-div")
+                    mercadosHTML("dolar", "moneda", "dolarBlue", "Dolar Blue", blue, `
+                    Compra: $${blue.ask}<br>
+                    Venta; $${blue.bid}<br>
+                    Variacion: ${blue.variation}<br>
+                    `);
+                    mercadosHTML("dolar", "moneda", "dolarAhorro", "Dolar Ahorro", ahorro, `
+                    Compra: $${ahorro.ask}<br>
+                    Venta; $${ahorro.bid}<br>
+                    Variacion: ${ahorro.variation}<br>
+                    `);
+                    mercadosHTML("dolar", "moneda", "dolarAhorro", "Dolar Mayorista", mayorista, `
+                    Precio: $${mayorista.price}<br>
+                    Variacion: ${mayorista.variation}<br>
+                    `);
+                    mercadosHTML("dolar", "moneda", "dolarAhorro", "Dolar Oficial", oficial, `
+                    Precio: $${oficial.price}<br>
+                    Variacion: ${oficial.variation}<br>
+                    `);
+                    mercadosHTML("dolar", "moneda", "dolarAhorro", "Dolar Tarjeta", tarjeta, `
+                    Precio: $${tarjeta.price}<br>
+                    Variacion: ${tarjeta.variation}<br>
+                    `);
+                })
+            .catch(error => Swal.fire({
+                text: `No hay cotizaciones. Error: ${error}`,
+                icon: "error",
+                iconColor: "#36A094",
+                confirmButtonColor: `#36A094`
+            }))
+        }
+    });
+};
+
+export const cerrarMercados = (btnCerrar) => {
+    document.addEventListener("click", (e) => {
+        if(e.target.matches(btnCerrar)) {
+            document.getElementById("crypto-dolar").classList.add("cerrada");
+            document.getElementById("crypto-dolar").classList.remove("abrir-div");
+            let $dolar = document.getElementById("dolar");
+            while($dolar.firstChild) {
+                $dolar.removeChild($dolar.firstChild)
+            }
+            document.getElementById("verCotizaciones").removeAttribute("disabled");
+            document.getElementById("cotizar").removeAttribute("disabled");
+            document.getElementById("buscar").removeAttribute("disabled");
+            document.getElementById("btnMercados").removeAttribute("disabled");
+        }
+    })
 };
