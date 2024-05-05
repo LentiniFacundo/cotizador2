@@ -218,12 +218,19 @@ export const verMercados = (btnMercados) => {
                     Variacion: ${tarjeta.variation}<br>
                     `);
                 })
-            .catch(error => Swal.fire({
+            .catch(error => {
+                cerrarLoader();
+                Swal.fire({
                 text: `No hay cotizaciones. Error: ${error}`,
                 icon: "error",
                 iconColor: "#36A094",
                 confirmButtonColor: `#36A094`
-            }))
+            });
+            document.getElementById("verCotizaciones").removeAttribute("disabled");
+            document.getElementById("cotizar").removeAttribute("disabled");
+            document.getElementById("buscar").removeAttribute("disabled");
+            document.getElementById("btnMercados").removeAttribute("disabled");
+        })
         }
     });
 };
