@@ -1,6 +1,6 @@
 import { Prestamo } from "./class-prestamo.js";
 import { cotizacionesHTML } from "./cotizaciones-html.js";
-import { cerrarLoader, loader } from "./loader.js";
+import { loader } from "./loader.js";
 import { mercadosHTML } from "./mercados-html.js";
 
 
@@ -183,7 +183,7 @@ export const verMercados = (btnMercados) => {
             document.getElementById("cotizar").setAttribute("disabled", "true");
             document.getElementById("buscar").setAttribute("disabled", "true");
             document.getElementById("btnMercados").setAttribute("disabled", "true");
-            loader();
+            loader.abrir();
             fetch("https://criptoya.com/api/dolar", {
                 headers: {
                     "content.type": "aplication/json"
@@ -191,7 +191,7 @@ export const verMercados = (btnMercados) => {
             })
             .then(response => response.json())
             .then(({ahorro, blue, mayorista, oficial, tarjeta, ccl}) => {
-                    cerrarLoader()
+                    loader.cerrar();
                     let $container = document.getElementById("crypto-dolar");
                     if($container.classList.contains("cerrada")) $container.classList.remove("cerrada");
                     document.querySelector(".crypto-dolar").classList.add("abrir-div")
@@ -219,7 +219,7 @@ export const verMercados = (btnMercados) => {
                     `);
                 })
             .catch(error => {
-                cerrarLoader();
+                loader.cerrar();
                 Swal.fire({
                 text: `No hay cotizaciones. Error: ${error}`,
                 icon: "error",
